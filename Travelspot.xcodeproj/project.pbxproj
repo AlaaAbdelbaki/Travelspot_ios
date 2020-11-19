@@ -16,6 +16,7 @@
 		61B2D1CA256581200010AF26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61B2D1C8256581200010AF26 /* LaunchScreen.storyboard */; };
 		61B2D1D5256581200010AF26 /* TravelspotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2D1D4256581200010AF26 /* TravelspotTests.swift */; };
 		61B2D1E0256581200010AF26 /* TravelspotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2D1DF256581200010AF26 /* TravelspotUITests.swift */; };
+		61B2D1F52565B2380010AF26 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61B2D1F12565B1C60010AF26 /* video.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		61B2D1DB256581200010AF26 /* TravelspotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelspotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B2D1DF256581200010AF26 /* TravelspotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelspotUITests.swift; sourceTree = "<group>"; };
 		61B2D1E1256581200010AF26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61B2D1F12565B1C60010AF26 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				61B2D1C8256581200010AF26 /* LaunchScreen.storyboard */,
 				61B2D1CB256581200010AF26 /* Info.plist */,
 				61B2D1C32565811F0010AF26 /* Travelspot.xcdatamodeld */,
+				61B2D1F12565B1C60010AF26 /* video.mp4 */,
 			);
 			path = Travelspot;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				61B2D1CA256581200010AF26 /* LaunchScreen.storyboard in Resources */,
 				61B2D1C7256581200010AF26 /* Assets.xcassets in Resources */,
 				61B2D1C22565811F0010AF26 /* Main.storyboard in Resources */,
+				61B2D1F52565B2380010AF26 /* video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -425,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
