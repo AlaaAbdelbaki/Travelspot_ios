@@ -7,15 +7,35 @@
 
 import UIKit
 import AVFoundation
+import GoogleSignIn
 
 class ViewController: UIViewController {
 
     
+    
+    @IBOutlet weak var signInButton: GIDSignInButton!
     @IBOutlet weak var videoLayer: UIView!
+    @IBAction func signinEmailBtn(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "loginWithEmailSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.bool(forKey: "isRemembered") {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeView")
+            self.present(initialViewController, animated: true, completion: nil)
+        }
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+
+          // Automatically sign in the user.
+          GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         // Do any additional setup after loading the view.
         playVideo()
+        debugPrint(UserDefaults.standard.bool(forKey: "isRemembered"))
+        
+        
+        
     }
 
 
