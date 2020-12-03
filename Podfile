@@ -1,15 +1,25 @@
-# Uncomment the next line to define a global platform for your project
+  # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
 target 'Travelspot' do
   # Comment the next line if you don't want to use dynamic frameworks
-  #use_frameworks!
+  use_frameworks!
+  pod 'Cards'
   pod 'GoogleSignIn'
   pod 'SOTabBar'
-  pod 'Alamofire', '~> 5.2'
-  pod 'MaterialComponents/LibraryInfo'
-
+  pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireObjectMapper', '~> 5.2'
+  pod 'CardParts'
+  
   # Pods for Travelspot
+  
+  post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = [
+        '$(FRAMEWORK_SEARCH_PATHS)'
+      ]
+    end
+  end
 
   target 'TravelspotTests' do
     inherit! :search_paths

@@ -11,7 +11,7 @@ import Alamofire
 
 class LoginEmail: UIViewController{
 
-    let baseUrl = "http://127.0.0.1:3000/services/checkLogin?email="
+    let baseUrl = "http://127.0.0.1:3000/services/checkLogin"
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var rememberMe: UISwitch!
@@ -20,7 +20,8 @@ class LoginEmail: UIViewController{
     @IBAction func loginBtn(_ sender: Any) {
         let email = emailInput.text
         let password = passwordInput.text
-        let request = AF.request(baseUrl+email!+"&pass="+password!)
+        let params: [String : String] = ["email":email!,"password":password!]
+        let request = Alamofire.request(baseUrl,method: .post,parameters: params,encoding: JSONEncoding.default)
         request.responseString { (response) in
             debugPrint(response.value!)
             if(response.value! == "true"){
@@ -35,9 +36,6 @@ class LoginEmail: UIViewController{
                 self.present(alert, animated: true)
             }
         }
-//        if(true){
-//
-//        }
         
     }
     override func viewDidLoad() {

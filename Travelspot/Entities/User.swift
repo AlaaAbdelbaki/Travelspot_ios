@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import ObjectMapper
 
-public class User{
+class User : Mappable{
     //Properties
     var id:Int?
     var firstName:String?
@@ -17,4 +18,22 @@ public class User{
     var token:String?
     var createdAt:Date?
     var updatedAt:Date?
+    
+    required init?(map: Map) {
+
+        }
+    
+    func mapping(map: Map) {
+        id    <- map["id"]
+        firstName    <- map["firstName"]
+        lastName    <- map["lastName"]
+        email    <- map["email"]
+        password    <- map["password"]
+        token    <- map["token"]
+        createdAt    <- map["createdAt"]
+        updatedAt    <- map["updatedAt"]
+    }
+    
+    
+    
 }

@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().tintColor = .red
         // Override point for customization after application launch.
         GIDSignIn.sharedInstance().clientID = "74512326417-81se5qotskdqi049msssf5c0guo7fjm5.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self

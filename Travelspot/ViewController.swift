@@ -21,11 +21,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.bool(forKey: "isRemembered") {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeView")
-            self.present(initialViewController, animated: true, completion: nil)
-        }
         GIDSignIn.sharedInstance()?.presentingViewController = self
 
           // Automatically sign in the user.
