@@ -6,11 +6,31 @@
 //
 
 import UIKit
+import Mapbox
+import Alamofire
+
 
 class AddViewController: UIViewController {
 
+    
+    @IBOutlet weak var tripTitleInput: UITextField!
+    @IBOutlet weak var startDateInput: UIDatePicker!
+    @IBOutlet weak var endDateInput: UIDatePicker!
+    @IBAction func openMap(_ sender: Any) {
+        
+        performSegue(withIdentifier: "openMap", sender: self)
+        
+        let trip = Trip(title: tripTitleInput.text!, startDate: startDateInput.date, endDate: endDateInput.date, location: "", userId: 1)
+        
+        let tripJSON = trip.toJSONString(prettyPrint: true)
+        let params = jsonToDictionary(from: tripJSON!) ?? [String : Any]()
+        Alamofire.request(Statics.BASE_URL_SERVICES+"addtrip",method: .post,parameters: params ,encoding: JSONEncoding.default)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -26,4 +46,10 @@ class AddViewController: UIViewController {
     }
     */
 
+    func jsonToDictionary(from text: String) -> [String: Any]? {
+        guard let data = text.data(using: .utf8) else { return nil }
+        let anyResult = try? JSONSerialization.jsonObject(with: data, options: [])
+        return anyResult as? [String: Any]
+    }
+    
 }

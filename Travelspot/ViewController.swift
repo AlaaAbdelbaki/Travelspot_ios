@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        skipFirstScreen()
         GIDSignIn.sharedInstance()?.presentingViewController = self
 
           // Automatically sign in the user.
@@ -31,8 +32,14 @@ class ViewController: UIViewController {
         
         
         
+        
     }
 
+    func skipFirstScreen(){
+        if(UserDefaults.standard.bool(forKey: "isRemembered") == true){
+            performSegue(withIdentifier: "skipLogin", sender: ViewController.self)
+        }
+    }
 
     func playVideo(){
         guard let path = Bundle.main.path(forResource: "video" , ofType: "mp4")else{

@@ -11,17 +11,17 @@ import Alamofire
 
 class LoginEmail: UIViewController{
 
-    let baseUrl = "http://127.0.0.1:3000/services/checkLogin"
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var rememberMe: UISwitch!
     @IBAction func signUpBtn(_ sender: Any) {
+        performSegue(withIdentifier: "signupSegue", sender: self)
     }
     @IBAction func loginBtn(_ sender: Any) {
         let email = emailInput.text
         let password = passwordInput.text
         let params: [String : String] = ["email":email!,"password":password!]
-        let request = Alamofire.request(baseUrl,method: .post,parameters: params,encoding: JSONEncoding.default)
+        let request = Alamofire.request(Statics.BASE_URL_SERVICES+"checkLogin",method: .post,parameters: params,encoding: JSONEncoding.default)
         request.responseString { (response) in
             debugPrint(response.value!)
             if(response.value! == "true"){

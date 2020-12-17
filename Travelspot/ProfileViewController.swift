@@ -9,51 +9,102 @@ import UIKit
 import Cards
 import Alamofire
 import AlamofireObjectMapper
+import Kingfisher
+import MaterialComponents
 
-class ProfileViewController: UIViewController {
-    let baseUrl = "http://127.0.0.1:3000/services/"
+class ProfileViewController: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+    
+    
 
-    @IBOutlet weak var profileDetails: CardHighlight!
-    @IBOutlet weak var flags: CardArticle!
-    @IBOutlet weak var achievements: CardArticle!
-    @IBOutlet weak var latestPost: CardArticle!
+    
     var userA:User?
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var countries: UILabel!
+    @IBAction func userCard(_ sender: MDCCard) {
+        performSegue(withIdentifier: "editProfileSegue", sender:self)
+    }
+    
+    @IBOutlet weak var postProfilePic: UIImageView!
+    @IBOutlet weak var postUsername: UILabel!
+    @IBOutlet weak var postLocation: UILabel!
+    @IBOutlet weak var postBody: UITextView!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        profileDetails.delegate = self
-        flags.delegate = self
-        achievements.delegate = self
-        latestPost.delegate = self
         
         
         
         
-        Alamofire.request(baseUrl + "getUser?email=" + UserDefaults.standard.string(forKey: "email")!).responseObject{
+        
+        Alamofire.request(Statics.BASE_URL_SERVICES + "getUser?email=" + UserDefaults.standard.string(forKey: "email")!).responseObject{
             (response: DataResponse<User>) in
             let user = response.result.value
             self.userA = response.result.value
-            self.profileDetails.title = user!.firstName! + " " + user!.lastName!
-            Alamofire.request(self.baseUrl + "getFollowers?id=\(user!.id!)").responseArray{
+            self.username.text = user!.firstName! + " " + user!.lastName!
+            if(user!.profilePicture == nil){
+                let url = URL(string: Statics.BASE_URL+"uploads/default.jpg")
+                self.profilePicture.kf.setImage(with: url)
+            }else{
+                let url = URL(string: Statics.BASE_URL+user!.profilePicture!)
+                self.profilePicture.kf.setImage(with: url)
+            }
+            /*Alamofire.request(self.baseUrl + "getFollowers?id=\(user!.id!)").responseArray{
                 (response: DataResponse<[Follower]>) in
                 let followers = response.result.value
                 self.profileDetails.itemSubtitle = "\(followers!.count) followers"
                 
-            }
-            Alamofire.request(self.baseUrl + "getCountries?id=\(user!.id!)").responseArray{
+            }*/
+            Alamofire.request(Statics.BASE_URL_SERVICES + "getCountries?id=\(user!.id!)").responseArray{
                 (response: DataResponse<[Country]>) in
                 let countries = response.result.value
-                self.profileDetails.itemTitle = "Visited \(countries!.count) countries"
+                self.countries.text = "Visited \(countries!.count) countries"
                 
+            }
+            
+            Alamofire.request(Statics.BASE_URL_SERVICES+"getpostsbyuser?id=\(user!.id!)").responseArray{
+                (response: DataResponse<[Post]>) in
+                let posts = response.result.value
+                if(user!.profilePicture == nil){
+                    let url = URL(string: Statics.BASE_URL+"uploads/default.jpg")
+                    self.postProfilePic.kf.setImage(with: url)
+                }else{
+                    let url = URL(string: Statics.BASE_URL+user!.profilePicture!)
+                    self.postProfilePic.kf.setImage(with: url)
+                }
+                self.postBody.text = posts![0].body
+                self.postLocation.text = posts![0].location
+                self.postUsername.text = "\(user!.firstName!) \(user!.lastName!)"
             }
             
             
         }
         
-        profileDetails.buttonText = "Update Profile"
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profilePicture.isUserInteractionEnabled = true
+        profilePicture.addGestureRecognizer(tapGestureRecognizer)
+        
+        //profileDetails.buttonText = "Update Profile"
         
     }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                var imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .camera;
+                imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+            }
+        
+    }
+    
+    
     
 
     /*

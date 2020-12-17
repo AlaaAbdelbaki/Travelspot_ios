@@ -10,7 +10,13 @@ target 'Travelspot' do
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireObjectMapper', '~> 5.2'
   pod 'CardParts'
-  
+  pod 'FaveButton'
+  pod 'MapboxAnnotationExtension', '0.0.1-beta.1'
+  pod 'Mapbox-iOS-SDK', '~> 5.2.0'
+  pod 'MapboxGeocoder.swift', '~> 0.11'
+  pod 'Kingfisher', '~> 5.15'
+  pod "MaterialComponents/Cards"
+ 
   # Pods for Travelspot
   
   post_install do |installer|

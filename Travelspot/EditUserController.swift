@@ -11,7 +11,6 @@ import Alamofire
 class EditUserController: UIViewController {
     
     var user:User?
-    let baseUrl = "http://127.0.0.1/services/"
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var lastNameInput: UITextField!
     @IBOutlet weak var firstNameInput: UITextField!
@@ -26,8 +25,10 @@ class EditUserController: UIViewController {
                 user?.password = passwordInput.text
             }
             
-            //Alamofire.request(baseUrl,method: .put,parameters: user,encoding: JSONEncoding.default)
-            
+            let userJSON = user?.toJSONString()
+            let params = jsonToDictionary(from: userJSON!)
+            Alamofire.request(Statics.BASE_URL_SERVICES+"updateUser",method: .put,parameters: params,encoding: JSONEncoding.default)
+
         }
     }
     
@@ -35,11 +36,19 @@ class EditUserController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if(user!.id != nil){
+            //debugPrint("\(user!.id!)")
             emailInput.text = user!.email
             lastNameInput.text = user!.lastName
             firstNameInput.text = user!.firstName
         }
         // Do any additional setup after loading the view.
+    }
+    
+    
+    func jsonToDictionary(from text: String) -> [String: Any]? {
+        guard let data = text.data(using: .utf8) else { return nil }
+        let anyResult = try? JSONSerialization.jsonObject(with: data, options: [])
+        return anyResult as? [String: Any]
     }
     
 
