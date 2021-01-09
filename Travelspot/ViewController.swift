@@ -19,26 +19,16 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "loginWithEmailSegue", sender: self)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        skipFirstScreen()
+        
         GIDSignIn.sharedInstance()?.presentingViewController = self
-
           // Automatically sign in the user.
           GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        // Do any additional setup after loading the view.
+         //Do any additional setup after loading the view
         playVideo()
-        debugPrint(UserDefaults.standard.bool(forKey: "isRemembered"))
         
-        
-        
-        
-    }
-
-    func skipFirstScreen(){
-        if(UserDefaults.standard.bool(forKey: "isRemembered") == true){
-            performSegue(withIdentifier: "skipLogin", sender: ViewController.self)
-        }
     }
 
     func playVideo(){

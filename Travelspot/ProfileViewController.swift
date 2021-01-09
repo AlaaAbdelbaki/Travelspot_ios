@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Cards
 import Alamofire
 import AlamofireObjectMapper
 import Kingfisher
@@ -95,7 +94,7 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                var imagePicker = UIImagePickerController()
+            let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = .camera;
                 imagePicker.allowsEditing = false
@@ -124,18 +123,8 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
 
 }
 
-extension ProfileViewController: CardDelegate {
+
     
-    func cardDidTapInside(card: Card) {
-        
-        
-    }
-    
-    func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
-        
-        performSegue(withIdentifier: "editProfileSegue", sender: ProfileViewController.self)
-    }
-    
-}
+
 
 

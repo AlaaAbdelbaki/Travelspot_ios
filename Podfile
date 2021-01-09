@@ -4,12 +4,9 @@
 target 'Travelspot' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Cards'
   pod 'GoogleSignIn'
-  pod 'SOTabBar'
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireObjectMapper', '~> 5.2'
-  pod 'CardParts'
   pod 'FaveButton'
   pod 'MapboxAnnotationExtension', '0.0.1-beta.1'
   pod 'Mapbox-iOS-SDK', '~> 5.2.0'

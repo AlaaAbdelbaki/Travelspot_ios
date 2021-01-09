@@ -46,7 +46,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         getUserLocation()
         
         let options = ReverseGeocodeOptions(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
-        let task = geocoder.geocode(options) { (placemarks, attribution, error) in
+        geocoder.geocode(options) { (placemarks, attribution, error) in
             guard let placemark = placemarks?.first else {
                 return
             }

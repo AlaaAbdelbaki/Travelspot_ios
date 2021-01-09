@@ -62,7 +62,7 @@ class FeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         Alamofire.request(Statics.BASE_URL_SERVICES+"getposts").responseArray{
             (response : DataResponse<[Post]>) in
             self.posts = response.result.value!
-            for post in self.posts {
+            for _ in self.posts {
                 self.tableView.reloadData()
             }
         }

@@ -70,7 +70,7 @@
                         <outlet property="signInButton" destination="3HW-5U-KfL" id="Pee-qq-BCl"/>
                         <outlet property="videoLayer" destination="w2H-Nx-PkT" id="zfa-xB-exC"/>
                         <segue destination="ptq-uD-3d0" kind="presentation" identifier="loginWithEmailSegue" modalPresentationStyle="fullScreen" id="0lc-Az-0Na"/>
-                        <segue destination="pkH-F5-wSR" kind="show" identifier="skipLogin" id="53E-Wu-FGq"/>
+                        <segue destination="pkH-F5-wSR" kind="show" identifier="skipLogin" id="COY-4L-ZAK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -446,7 +446,7 @@
         <!--Home-->
         <scene sceneID="akb-vk-KH2">
             <objects>
-                <viewController title="Home" id="hPZ-QV-YzD" customClass="HomeViewController" customModule="Travelspot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" title="Home" id="hPZ-QV-YzD" customClass="HomeViewController" customModule="Travelspot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sgi-qU-aNr">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,6 +528,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="8FA-nw-bLz"/>
+                    <navigationItem key="navigationItem" id="hZS-no-UaY"/>
                     <connections>
                         <outlet property="city" destination="tbB-zv-P9W" id="x0I-Nu-YOX"/>
                         <outlet property="country" destination="OZ8-Q0-zmR" id="auR-B0-m6C"/>
@@ -543,7 +544,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="TXT-1l-3NR">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="pkH-F5-wSR" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="loggedInView" modalPresentationStyle="fullScreen" id="pkH-F5-wSR" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="aZl-jx-Y0q"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gtR-na-0BO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -560,7 +561,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpE-8f-eux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="838"/>
+            <point key="canvasLocation" x="135" y="831"/>
         </scene>
         <!--Discover-->
         <scene sceneID="ToE-aV-XmM">
@@ -576,7 +577,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mbf-UO-4De">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="209" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mbf-UO-4De">
                                 <rect key="frame" x="0.0" y="114" width="428" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -587,12 +588,41 @@
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4aE-PR-HgZ" customClass="MDCCard">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aE-PR-HgZ" customClass="MDCCard">
                                                     <rect key="frame" x="20" y="11" width="388" height="187"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="3xX-kB-gvQ">
+                                                            <rect key="frame" x="144" y="10" width="100" height="98"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username and last name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv7-Qo-IAn">
+                                                            <rect key="frame" x="8" y="146" width="372" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="CA6-na-WQK"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Nv7-Qo-IAn" secondAttribute="trailing" constant="8" id="Gam-os-4bP"/>
+                                                        <constraint firstItem="Nv7-Qo-IAn" firstAttribute="top" secondItem="3xX-kB-gvQ" secondAttribute="bottom" constant="38" id="IAa-uG-OkP"/>
+                                                        <constraint firstItem="Nv7-Qo-IAn" firstAttribute="leading" secondItem="4aE-PR-HgZ" secondAttribute="leading" constant="8" id="J4N-vF-H4F"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Nv7-Qo-IAn" secondAttribute="bottom" constant="20" id="VcH-5K-ynK"/>
+                                                        <constraint firstItem="Nv7-Qo-IAn" firstAttribute="top" secondItem="3xX-kB-gvQ" secondAttribute="bottom" constant="38" id="cjj-mt-lJO"/>
+                                                        <constraint firstItem="3xX-kB-gvQ" firstAttribute="top" secondItem="4aE-PR-HgZ" secondAttribute="top" constant="10" id="d3X-k7-wP5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3xX-kB-gvQ" secondAttribute="trailing" constant="144" id="ha2-77-23I"/>
+                                                        <constraint firstItem="3xX-kB-gvQ" firstAttribute="leading" secondItem="4aE-PR-HgZ" secondAttribute="leading" constant="144" id="qUW-fd-XZg"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4aE-PR-HgZ" firstAttribute="leading" secondItem="Tmw-9I-rtm" secondAttribute="leadingMargin" id="FdC-lw-l0I"/>
+                                                <constraint firstItem="4aE-PR-HgZ" firstAttribute="top" secondItem="Tmw-9I-rtm" secondAttribute="topMargin" id="hx9-m8-z1e"/>
+                                                <constraint firstItem="4aE-PR-HgZ" firstAttribute="bottom" secondItem="Tmw-9I-rtm" secondAttribute="bottomMargin" id="izs-5I-Vwp"/>
+                                                <constraint firstItem="4aE-PR-HgZ" firstAttribute="trailing" secondItem="Tmw-9I-rtm" secondAttribute="trailingMargin" id="knp-RZ-UwS"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -616,6 +646,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" image="search" id="xEy-aY-YZw"/>
+                    <connections>
+                        <outlet property="tableView" destination="Mbf-UO-4De" id="hCy-at-PaI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bK0-fM-VyW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1076,10 +1109,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BGK-o2-dfZ"/>
-        <segue reference="g7c-i3-5ER"/>
+        <segue reference="COY-4L-ZAK"/>
+        <segue reference="0lc-Az-0Na"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="default" width="360" height="360"/>
         <image name="feed" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="logo_no_bg" width="512" height="512"/>

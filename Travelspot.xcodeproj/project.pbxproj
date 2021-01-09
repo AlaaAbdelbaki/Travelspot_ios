@@ -11,7 +11,6 @@
 		61054BB72578808A00949183 /* EditUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61054BB62578808A00949183 /* EditUserController.swift */; };
 		611ED7EF2578579200F57272 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611ED7EE2578579200F57272 /* Country.swift */; };
 		611ED7F3257857CB00F57272 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611ED7F2257857CB00F57272 /* Follower.swift */; };
-		615A4CF3256FF57A00ECFD63 /* TabViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A4CF2256FF57A00ECFD63 /* TabViewViewController.swift */; };
 		615F1055256F8A25009F8E7B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615F1054256F8A25009F8E7B /* HomeViewController.swift */; };
 		615F1063256F8C56009F8E7B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615F1062256F8C56009F8E7B /* FeedViewController.swift */; };
 		615F1067256F8C73009F8E7B /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615F1066256F8C73009F8E7B /* AddViewController.swift */; };
@@ -76,7 +75,6 @@
 		61054BB62578808A00949183 /* EditUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserController.swift; sourceTree = "<group>"; };
 		611ED7EE2578579200F57272 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		611ED7F2257857CB00F57272 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
-		615A4CF2256FF57A00ECFD63 /* TabViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewViewController.swift; sourceTree = "<group>"; };
 		615F1054256F8A25009F8E7B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		615F1062256F8C56009F8E7B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		615F1066256F8C73009F8E7B /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				61B2D1CB256581200010AF26 /* Info.plist */,
 				61B2D1C32565811F0010AF26 /* Travelspot.xcdatamodeld */,
 				61B2D1F12565B1C60010AF26 /* video.mp4 */,
-				615A4CF2256FF57A00ECFD63 /* TabViewViewController.swift */,
 				61054BB62578808A00949183 /* EditUserController.swift */,
 				6164A3C62578DE090044E2EE /* RegisterViewController.swift */,
 				619ECF6F25821DFC002755EF /* Statics.swift */,
@@ -543,7 +540,6 @@
 				61B2D1BD2565811F0010AF26 /* SceneDelegate.swift in Sources */,
 				61B2D1C52565811F0010AF26 /* Travelspot.xcdatamodeld in Sources */,
 				619403942581597800AA6856 /* Trip.swift in Sources */,
-				615A4CF3256FF57A00ECFD63 /* TabViewViewController.swift in Sources */,
 				61691033258AEDE700467588 /* AddPostViewController.swift in Sources */,
 				617BBEE825703EE0005C10E5 /* User.swift in Sources */,
 				6164A3C72578DE090044E2EE /* RegisterViewController.swift in Sources */,
@@ -657,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -712,7 +708,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
