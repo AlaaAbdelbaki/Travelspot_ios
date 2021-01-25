@@ -18,6 +18,8 @@
 		615F106F256F8C9A009F8E7B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615F106E256F8C9A009F8E7B /* ProfileViewController.swift */; };
 		6162C2BB256F070B0056F1DE /* LoginEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162C2BA256F07050056F1DE /* LoginEmail.swift */; };
 		6164A3C72578DE090044E2EE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164A3C62578DE090044E2EE /* RegisterViewController.swift */; };
+		616800D825AA2AD4005D700E /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616800D725AA2AD4005D700E /* Media.swift */; };
+		616800DC25AA2E6D005D700E /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616800DB25AA2E6D005D700E /* Like.swift */; };
 		61691033258AEDE700467588 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61691032258AEDE700467588 /* AddPostViewController.swift */; };
 		617BBEE825703EE0005C10E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617BBEE725703EE0005C10E5 /* User.swift */; };
 		619403902581437500AA6856 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6194038F2581437500AA6856 /* MapViewController.swift */; };
@@ -82,6 +84,8 @@
 		615F106E256F8C9A009F8E7B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6162C2BA256F07050056F1DE /* LoginEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmail.swift; sourceTree = "<group>"; };
 		6164A3C62578DE090044E2EE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		616800D725AA2AD4005D700E /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		616800DB25AA2E6D005D700E /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		61691032258AEDE700467588 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		617BBEE725703EE0005C10E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6194038F2581437500AA6856 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				611ED7F2257857CB00F57272 /* Follower.swift */,
 				619F0FF62580CBC500EF32FD /* Post.swift */,
 				619403932581597700AA6856 /* Trip.swift */,
+				616800D725AA2AD4005D700E /* Media.swift */,
+				616800DB25AA2E6D005D700E /* Like.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -530,11 +536,13 @@
 			files = (
 				615F106B256F8C84009F8E7B /* DiscoverViewController.swift in Sources */,
 				611ED7F3257857CB00F57272 /* Follower.swift in Sources */,
+				616800D825AA2AD4005D700E /* Media.swift in Sources */,
 				61B2D1BF2565811F0010AF26 /* ViewController.swift in Sources */,
 				615F106F256F8C9A009F8E7B /* ProfileViewController.swift in Sources */,
 				619F0FF72580CBC500EF32FD /* Post.swift in Sources */,
 				61B2D1BB2565811F0010AF26 /* AppDelegate.swift in Sources */,
 				611ED7EF2578579200F57272 /* Country.swift in Sources */,
+				616800DC25AA2E6D005D700E /* Like.swift in Sources */,
 				619ECF7025821DFC002755EF /* Statics.swift in Sources */,
 				615F1067256F8C73009F8E7B /* AddViewController.swift in Sources */,
 				61B2D1BD2565811F0010AF26 /* SceneDelegate.swift in Sources */,

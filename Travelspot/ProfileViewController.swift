@@ -21,26 +21,29 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var countries: UILabel!
     @IBAction func userCard(_ sender: MDCCard) {
-        performSegue(withIdentifier: "editProfileSegue", sender:self)
+        if(userEmail == UserDefaults.standard.string(forKey: "email")!){
+            performSegue(withIdentifier: "editProfileSegue", sender:self)
+        }
     }
     
+    @IBAction func userPosts(_ sender: MDCCard) {
+        if(!allPosts.isEmpty){
+            performSegue(withIdentifier: "userPosts", sender: self)
+        }
+    }
     @IBOutlet weak var postProfilePic: UIImageView!
     @IBOutlet weak var postUsername: UILabel!
     @IBOutlet weak var postLocation: UILabel!
     @IBOutlet weak var postBody: UITextView!
+    var allPosts:[Post] = []
     
-    
-    
+    var userEmail = UserDefaults.standard.string(forKey: "email")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
-        
-        
-        
-        Alamofire.request(Statics.BASE_URL_SERVICES + "getUser?email=" + UserDefaults.standard.string(forKey: "email")!).responseObject{
+
+        Alamofire.request(Statics.BASE_URL_SERVICES + "getUser?email=" + userEmail ).responseObject{
             (response: DataResponse<User>) in
             let user = response.result.value
             self.userA = response.result.value
@@ -67,7 +70,7 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
             
             Alamofire.request(Statics.BASE_URL_SERVICES+"getpostsbyuser?id=\(user!.id!)").responseArray{
                 (response: DataResponse<[Post]>) in
-                let posts = response.result.value
+                
                 if(user!.profilePicture == nil){
                     let url = URL(string: Statics.BASE_URL+"uploads/default.jpg")
                     self.postProfilePic.kf.setImage(with: url)
@@ -75,9 +78,19 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
                     let url = URL(string: Statics.BASE_URL+user!.profilePicture!)
                     self.postProfilePic.kf.setImage(with: url)
                 }
-                self.postBody.text = posts![0].body
-                self.postLocation.text = posts![0].location
-                self.postUsername.text = "\(user!.firstName!) \(user!.lastName!)"
+                let posts = response.result.value
+                self.allPosts = posts!
+                //debugPrint(posts!.count)
+                if(posts!.count > 0){
+                    self.postBody.text = posts![0].body
+                    self.postLocation.text = posts![0].location
+                    self.postUsername.text = "\(user!.firstName!) \(user!.lastName!)"
+                }else{
+                    self.postBody.text = "This user has no posts yet"
+                    self.postLocation.text = ""
+                    self.postUsername.text = "\(user!.firstName!) \(user!.lastName!)"
+                }
+                
             }
             
             
@@ -93,14 +106,15 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .camera;
-                imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
-            }
-        
+        if(userEmail == UserDefaults.standard.string(forKey: "email")!){
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = .camera;
+                    imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+                }
+        }
     }
     
     
@@ -116,9 +130,17 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
     }
     */
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! EditUserController
-        destinationVC.user = userA
+        if(segue.identifier == "userPosts"){
+            let destination = segue.destination as! FeedViewController
+            destination.posts = allPosts
+        }else{
+            let destinationVC = segue.destination as! EditUserController
+            destinationVC.user = userA
+        }
+        
     }
 
 }

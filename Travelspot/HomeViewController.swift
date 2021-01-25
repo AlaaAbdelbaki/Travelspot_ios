@@ -33,12 +33,15 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         Alamofire.request(Statics.BASE_URL_SERVICES + "getUser?email=" + UserDefaults.standard.string(forKey: "email")!).responseObject{
             (response: DataResponse<User>) in
             let user = response.result.value
+            Statics.user = user!
             self.username.text = "Welcome back \(user!.firstName!)"
+            //debugPrint("\(user!.profilePicture!)")
             if(user!.profilePicture == nil){
                 let url = URL(string: Statics.BASE_URL+"uploads/default.jpg")
                 self.userPorfilePic.kf.setImage(with: url)
             }else{
                 let url = URL(string: Statics.BASE_URL+user!.profilePicture!)
+                //debugPrint("\(url!)")
                 self.userPorfilePic.kf.setImage(with: url)
             }
         }

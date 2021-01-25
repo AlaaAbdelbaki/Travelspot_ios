@@ -41,6 +41,7 @@ class User : Mappable{
         lastName    <- map["lastName"]
         email    <- map["email"]
         password    <- map["password"]
+        profilePicture <- map["profilePicture"]
         token    <- map["token"]
         createdAt    <- map["createdAt"]
         updatedAt    <- map["updatedAt"]

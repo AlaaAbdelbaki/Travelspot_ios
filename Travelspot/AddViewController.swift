@@ -20,7 +20,7 @@ class AddViewController: UIViewController {
         
         performSegue(withIdentifier: "openMap", sender: self)
         
-        let trip = Trip(title: tripTitleInput.text!, startDate: startDateInput.date, endDate: endDateInput.date, location: "", userId: 1)
+        let trip = Trip(title: tripTitleInput.text!, startDate: startDateInput.date, endDate: endDateInput.date, location: "", userId: Statics.user.id!)
         
         let tripJSON = trip.toJSONString(prettyPrint: true)
         let params = jsonToDictionary(from: tripJSON!) ?? [String : Any]()

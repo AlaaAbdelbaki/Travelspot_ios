@@ -20,18 +20,47 @@ class DiscoverViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         let profilePic = contentView?.viewWithTag(1) as! UIImageView
         let username = contentView?.viewWithTag(2) as! UILabel
+        //let card = contentView?.viewWithTag(3)
         
         if(users[indexPath.row]!.profilePicture == nil){
             let url = URL(string: Statics.BASE_URL+"uploads/default.jpg")
             profilePic.kf.setImage(with:url )
         }else{
-            let url = URL(string: Statics.BASE_URL+"uploads/\(users[indexPath.row]!.profilePicture!)")
+            let url = URL(string: Statics.BASE_URL+"\(users[indexPath.row]!.profilePicture!)")
             profilePic.kf.setImage(with: url)
         }
         username.text = "\(users[indexPath.row]!.firstName!) \(users[indexPath.row]!.lastName!)"
         
+        //card?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: goToProfile(sender: self)))
         
         return cell!
+    }
+    
+    /*
+     
+     this should be the correct way
+     
+     @objc func goToProfile(sender : UIView){
+        performSegue(withIdentifier: "profileSegue", sender: sender.indexPath)
+    }*/
+    
+    
+    
+    // delete this later
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "profileSegue", sender: indexPath)
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "profileSegue"){
+            let index = sender as! IndexPath
+            let destination = segue.destination as! ProfileViewController
+            //debugPrint(index)
+            destination.userEmail = users[index.row]!.email!
+        }
     }
     
     func getAllUsers(){

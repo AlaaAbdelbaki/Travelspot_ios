@@ -10,4 +10,5 @@ import Foundation
 public class Statics {
     static let BASE_URL = "http://localhost:3000/"
     static let BASE_URL_SERVICES = "http://localhost:3000/services/"
+    static var user = User()
 }

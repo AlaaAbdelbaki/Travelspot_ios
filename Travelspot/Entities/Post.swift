@@ -16,9 +16,9 @@ class Post : Mappable {
     var updatedAt:Date?
     var tripId:Int?
     var userId:Int?
+    var likeCount:Int?
     
     required init?(map: Map) {
-
         }
     init(){
         
