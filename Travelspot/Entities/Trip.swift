@@ -12,8 +12,8 @@ class Trip : Mappable {
     
     var id:Int?
     var title:String?
-    var startDate:Date?
-    var endDate:Date?
+    var startDate:Double?
+    var endDate:Double?
     var location:String?
     var createdAt:Date?
     var updatedAt:Date?
@@ -23,7 +23,7 @@ class Trip : Mappable {
 
         }
     
-    init(title:String,startDate:Date,endDate:Date,location:String,userId:Int){
+    init(title:String,startDate:Double,endDate:Double,location:String,userId:Int){
         self.title = title
         self.startDate = startDate
         self.endDate = endDate
@@ -36,7 +36,7 @@ class Trip : Mappable {
         title    <- map["title"]
         startDate    <- map["start"]
         endDate    <- map["end"]
-        location    <- map["locaitons"]
+        location    <- map["locations"]
         createdAt    <- map["createdAt"]
         updatedAt <- map ["updatedAt"]
         userId    <- map["UserId"]

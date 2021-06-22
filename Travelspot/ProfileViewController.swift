@@ -62,9 +62,9 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
                 
             }*/
             Alamofire.request(Statics.BASE_URL_SERVICES + "getCountries?id=\(user!.id!)").responseArray{
-                (response: DataResponse<[Country]>) in
+                (response: DataResponse<[Trip]>) in
                 let countries = response.result.value
-                self.countries.text = "Visited \(countries!.count) countries"
+                self.countries.text = "Visited \(countries!.count) new places !"
                 
             }
             
@@ -82,8 +82,8 @@ class ProfileViewController: UIViewController,UINavigationControllerDelegate,UII
                 self.allPosts = posts!
                 //debugPrint(posts!.count)
                 if(posts!.count > 0){
-                    self.postBody.text = posts![0].body
-                    self.postLocation.text = posts![0].location
+                    self.postBody.text = posts![(posts?.count)!-1].body
+                    self.postLocation.text =  DateFormatter().string(for: posts![(posts?.count)!-1].createdAt)
                     self.postUsername.text = "\(user!.firstName!) \(user!.lastName!)"
                 }else{
                     self.postBody.text = "This user has no posts yet"

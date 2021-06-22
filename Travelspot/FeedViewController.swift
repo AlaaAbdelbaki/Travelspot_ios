@@ -11,20 +11,12 @@ import Kingfisher
 
 class FeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    
-    
-    
     var posts : [Post] = []
     var ids: [Int] = []
     var user : User?
     
     let activityIndicator = UIActivityIndicatorView(style: .medium)
-    
-    
-    
-    
-    
-    
+        
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //debugPrint("Number of posts is \(posts.count)")
@@ -70,8 +62,6 @@ class FeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             likeBtn.addTarget(self, action: #selector(self.likePost), for: .touchUpInside)
         }
-    
-        
         Alamofire.request(Statics.BASE_URL_SERVICES+"getLike?postId=\(posts[indexPath.row].id!)&userId=\(Statics.user.id!)", method: .get, encoding: JSONEncoding.default).responseObject{
             (response : DataResponse<Like>) in
             if (response.value != nil){
@@ -80,10 +70,6 @@ class FeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 likeBtn.setTitle("Like", for: UIControl.State.normal)
             }
         }
-        
-        
-        
-        
         return cell!
     }
     @objc func likePost(sender : UIButton){
@@ -155,11 +141,6 @@ class FeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             //debugPrint("hello this is \(self.user!.email!)")
         }
     }
-    
-    
-    
-
-    
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {

@@ -10,7 +10,31 @@ import MapboxGeocoder
 import CoreLocation
 import Alamofire
 
-class HomeViewController: UIViewController,CLLocationManagerDelegate {
+class HomeViewController: UIViewController,CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource {
+    var trips : [Trip] = []
+    var user : User?
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return trips.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trip")
+        let contentView = cell?.contentView
+        
+        let countryName = contentView?.viewWithTag(1) as! UILabel
+        let visitDate = contentView?.viewWithTag(3) as! UILabel
+        
+        if(trips.count > 0){
+            countryName.text = trips[indexPath.row].location!
+            //visitDate.text = DateFormatter().string(from: Date(timeIntervalSince1970: trips[indexPath.row].startDate!))
+            visitDate.text = "23/06/2021"
+        }
+        
+        return cell!
+    }
+    
     private var locationManager:CLLocationManager?
     var coordinates: [CLLocationCoordinate2D]?
     
@@ -27,13 +51,16 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var country: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         Alamofire.request(Statics.BASE_URL_SERVICES + "getUser?email=" + UserDefaults.standard.string(forKey: "email")!).responseObject{
             (response: DataResponse<User>) in
             let user = response.result.value
             Statics.user = user!
+            self.user = user!
             self.username.text = "Welcome back \(user!.firstName!)"
             //debugPrint("\(user!.profilePicture!)")
             if(user!.profilePicture == nil){
@@ -46,6 +73,11 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             }
         }
         
+        if(trips.isEmpty){
+            getAllTrips()
+        }
+        
+        
         getUserLocation()
         
         let options = ReverseGeocodeOptions(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
@@ -53,6 +85,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             guard let placemark = placemarks?.first else {
                 return
             }
+            
 
             print(placemark.imageName ?? "")
                 // telephone
@@ -70,6 +103,16 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         
     }
+    
+    func getAllTrips(){
+        Alamofire.request(Statics.BASE_URL_SERVICES+"getTripsByUser?userId=1").responseArray{
+            (response : DataResponse<[Trip]>) in
+            self.trips = response.result.value!
+            
+            print(self.trips.count)
+            self.tableView.reloadData()
+        }
+    }
    
     func getUserLocation() {
            locationManager = CLLocationManager()
@@ -81,8 +124,6 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         if let location = locations.last {
             lat = location.coordinate.latitude
             long = location.coordinate.longitude
-            debugPrint(lat)
-            debugPrint(long)
         }
     }
     

@@ -21,7 +21,10 @@ class AddPostViewController: UIViewController {
         post.location = "Tunis"
         let postJSON = post.toJSONString()
         let params = jsonToDictionary(from: postJSON!) ?? [String:Any]()
-        Alamofire.request(Statics.BASE_URL_SERVICES+"addPost",method: .post,parameters: params,encoding: JSONEncoding.default)
+        Alamofire.request(Statics.BASE_URL_SERVICES+"addPost",method: .post,parameters: params,encoding: JSONEncoding.default).response{
+            response in
+            print(response.response?.statusCode)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()

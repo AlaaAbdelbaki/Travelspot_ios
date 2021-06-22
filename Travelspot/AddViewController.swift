@@ -14,18 +14,30 @@ class AddViewController: UIViewController {
 
     
     @IBOutlet weak var tripTitleInput: UITextField!
+    @IBOutlet weak var tripDestination : UITextField!
     @IBOutlet weak var startDateInput: UIDatePicker!
     @IBOutlet weak var endDateInput: UIDatePicker!
     @IBAction func openMap(_ sender: Any) {
-        
         performSegue(withIdentifier: "openMap", sender: self)
+    }
+    @IBAction func addTrip(_ sender: Any){
+        print(startDateInput.date)
+        print(endDateInput.date)
         
-        let trip = Trip(title: tripTitleInput.text!, startDate: startDateInput.date, endDate: endDateInput.date, location: "", userId: Statics.user.id!)
+        let trip = Trip(
+            title: tripTitleInput.text!,
+            startDate: startDateInput.date.timeIntervalSince1970,
+            endDate: endDateInput.date.timeIntervalSince1970,
+            location: tripDestination.text!,
+            userId: Statics.user.id!
+        )
         
         let tripJSON = trip.toJSONString(prettyPrint: true)
         let params = jsonToDictionary(from: tripJSON!) ?? [String : Any]()
+        print("params: "+tripJSON!)
         Alamofire.request(Statics.BASE_URL_SERVICES+"addtrip",method: .post,parameters: params ,encoding: JSONEncoding.default)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,5 +63,15 @@ class AddViewController: UIViewController {
         let anyResult = try? JSONSerialization.jsonObject(with: data, options: [])
         return anyResult as? [String: Any]
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "openMap"){
+            let destination = segue.destination as! MapViewController
+            destination.endDate = endDateInput.date
+            destination.startDate = startDateInput.date
+            destination.tripTitle = tripTitleInput.text
+        }
+    }
+    
     
 }

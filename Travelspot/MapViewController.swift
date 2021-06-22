@@ -8,6 +8,7 @@
 import UIKit
 import Mapbox
 import CoreLocation
+import MapboxGeocoder
 
 class MapViewController: UIViewController,CLLocationManagerDelegate,MGLMapViewDelegate {
     
@@ -17,6 +18,11 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MGLMapViewDe
     var long = 0.0
     var mapView :MGLMapView!
     var coordinates: [CLLocationCoordinate2D]?
+    var tripTitle : String?
+    var cityName : String?
+    var startDate : Date?
+    var endDate : Date?
+    let geocoder = Geocoder(accessToken: "sk.eyJ1IjoiYWxhYWFiIiwiYSI6ImNraWF2OHQ3MzAyMjUyenBvbTVsa2FmeTgifQ.545ZPew-d8DmUkrWgoWljg")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +81,14 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MGLMapViewDe
         mapView.annotations{
         mapView.removeAnnotations(existingAnnotations)
     }*/
-    let polyline = MGLPolyline(coordinates: &coordinates, count:
+    /*let polyline = MGLPolyline(coordinates: &coordinates, count:
                                 UInt(coordinates.count))
-    mapView.addAnnotation(polyline)
+    mapView.addAnnotation(polyline)*/
+    reverseGeocoding(long: long, lat: lat)
+    if(self.cityName != nil){
+        print("City is: "+self.cityName!)
+    }
+    //self.dismiss(animated: false, completion: nil)
     }
     
     /*
@@ -90,4 +101,47 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MGLMapViewDe
     }
     */
 
+    
+    
+    func reverseGeocoding(long:Double,lat:Double){
+        let options = ReverseGeocodeOptions(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+        // Or perhaps: ReverseGeocodeOptions(location: locationManager.location)
+
+
+        let task = geocoder.geocode(options) { (placemarks, attribution, error) in
+            guard let placemark = placemarks?.first else {
+                return
+            }
+
+            print(placemark.imageName ?? "")
+                // telephone
+            print(placemark.genres?.joined(separator: ", ") ?? "")
+                // computer, electronic
+            print(placemark.administrativeRegion?.name ?? "")
+            self.cityName = placemark.administrativeRegion?.name ?? ""
+                // New York
+            print(placemark.administrativeRegion?.code ?? "")
+                // US-NY
+            print(placemark.place?.wikidataItemIdentifier ?? "")
+                // Q60
+            self.performSegue(withIdentifier: "backToAddTrip", sender: nil)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "backToAddTrip"){
+            if let destination = segue.destination as? UITabBarController{
+                destination.selectedIndex = 2
+                let dest = destination.viewControllers![2] as! AddViewController
+                dest.endDateInput?.date = self.endDate!
+                dest.startDateInput?.date = self.startDate!
+                dest.tripTitleInput?.text = self.tripTitle!
+                dest.tripDestination?.text = self.cityName!
+            }
+            
+        }
+    }
+    
+    
 }

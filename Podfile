@@ -10,7 +10,7 @@ target 'Travelspot' do
   pod 'FaveButton'
   pod 'MapboxAnnotationExtension', '0.0.1-beta.1'
   pod 'Mapbox-iOS-SDK', '~> 5.2.0'
-  pod 'MapboxGeocoder.swift', '~> 0.11'
+  pod 'MapboxGeocoder.swift', '~> 0.13'
   pod 'Kingfisher', '~> 5.15'
   pod "MaterialComponents/Cards"
  

@@ -1,0 +1,113 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
+  - FaveButton (3.2.1)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.1.0):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher (~> 1.4)
+  - GTMSessionFetcher (1.5.0):
+    - GTMSessionFetcher/Full (= 1.5.0)
+  - GTMSessionFetcher/Core (1.5.0)
+  - GTMSessionFetcher/Full (1.5.0):
+    - GTMSessionFetcher/Core (= 1.5.0)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - Mapbox-iOS-SDK (5.2.0)
+  - MapboxAnnotationExtension (0.0.1-beta.1):
+    - Mapbox-iOS-SDK (~> 5.2)
+  - MapboxGeocoder.swift (0.12.0)
+  - MaterialComponents/AnimationTiming (119.2.0)
+  - MaterialComponents/Availability (119.2.0)
+  - MaterialComponents/Cards (119.2.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+  - MaterialComponents/Elevation (119.2.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (119.2.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Color (119.2.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Icons/Base (119.2.0)
+  - MaterialComponents/private/Icons/ic_check_circle (119.2.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (119.2.0)
+  - MaterialComponents/Ripple (119.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (119.2.0)
+  - MaterialComponents/ShadowLayer (119.2.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (119.2.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - ObjectMapper (3.5.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireObjectMapper (~> 5.2)
+  - FaveButton
+  - GoogleSignIn
+  - Kingfisher (~> 5.15)
+  - Mapbox-iOS-SDK (~> 5.2.0)
+  - MapboxAnnotationExtension (= 0.0.1-beta.1)
+  - MapboxGeocoder.swift (~> 0.11)
+  - MaterialComponents/Cards
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireObjectMapper
+    - AppAuth
+    - FaveButton
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
+    - Kingfisher
+    - Mapbox-iOS-SDK
+    - MapboxAnnotationExtension
+    - MapboxGeocoder.swift
+    - MaterialComponents
+    - ObjectMapper
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  FaveButton: 93cfebf6030336fa7653fad2068c3152ed668b39
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
+  GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  Mapbox-iOS-SDK: 3e095b305126d52ba166fe215d847b15b6fbee63
+  MapboxAnnotationExtension: d66de5561562c9d940153c0135725e671407b781
+  MapboxGeocoder.swift: e8ca1fcdfb8f674cad390569199dccf3d807ff77
+  MaterialComponents: a7206e4d3491b63c7cedc8d80032cbc0178a9497
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+
+PODFILE CHECKSUM: 3c311576f3d71560bc714c9e21dfb1687db8e9a7
+
+COCOAPODS: 1.10.0
